@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>Test</title>
-  </head>
-  <body>
-  Hey you ! I'm a kind rest controller :) I'm coded on the HomeController java file :D
-  </body>
+</head>
+<body>
+Hey you ! I'm a kind rest controller :) I'm coded on the HomeController java file :D
+</body>
 </html>
