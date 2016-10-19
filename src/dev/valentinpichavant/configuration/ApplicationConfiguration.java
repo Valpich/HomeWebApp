@@ -9,8 +9,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManagerFactory;
 
 /**
  * Created by dev.valentinpichavant on 10/17/16.
@@ -19,16 +17,6 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(basePackages = "dev.valentinpichavant")
 @EnableWebMvc
 class ApplicationConfiguration extends WebMvcConfigurerAdapter {
-
-    @PostConstruct
-    public void init() {
-        System.out.print("Instianciated");
-    }
-
-    @Bean
-    public EntityManagerFactory entityManagerFactory() {
-        return null;
-    }
 
     @Bean
     public ViewResolver getViewResolver() {
