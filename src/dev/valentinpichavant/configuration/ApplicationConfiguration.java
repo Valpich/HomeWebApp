@@ -1,5 +1,6 @@
 package dev.valentinpichavant.configuration;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,6 +25,7 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
             // hibernate.cfg.xml
             .buildSessionFactory();
 
+
     @Bean
     public ViewResolver getViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -32,9 +34,9 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    @Bean
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
+    @Bean(destroyMethod = "close")
+    public Session getSession() {
+        return sessionFactory.openSession();
     }
 
     @Override

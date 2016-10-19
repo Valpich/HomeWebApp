@@ -2,7 +2,6 @@ package dev.valentinpichavant.controllers;
 
 import dev.valentinpichavant.beans.Outlet;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,20 +17,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    private Session session;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     protected ModelAndView test() {
-
-        Session session = sessionFactory.openSession();
-
         Transaction tx = session.beginTransaction();
-
         Outlet outlet = new Outlet();
         outlet.setActivated(true);
         session.save(outlet);
         tx.commit();
-        session.close();
         return new ModelAndView("test");
     }
 }
