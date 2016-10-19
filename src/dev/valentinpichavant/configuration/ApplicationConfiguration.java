@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -34,6 +35,7 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    @Scope("application")
     @Bean(destroyMethod = "close")
     public Session getSession() {
         return sessionFactory.openSession();
