@@ -42,4 +42,5 @@ public class Outlet {
     public Outlet(Boolean activated) {
         this.activated = activated;
     }
+
 }

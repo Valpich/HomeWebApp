@@ -1,5 +1,6 @@
 package dev.valentinpichavant.configuration;
 
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +19,22 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
+    private SessionFactory sessionFactory = new org.hibernate.cfg.Configuration().configure("/dev/valentinpichavant/configuration/hibernate.cfg.xml") // configures settings
+            // from
+            // hibernate.cfg.xml
+            .buildSessionFactory();
+
     @Bean
     public ViewResolver getViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }
+
+    @Bean
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
     @Override
