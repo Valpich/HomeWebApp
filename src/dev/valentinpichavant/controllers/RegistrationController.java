@@ -10,11 +10,12 @@ import dev.valentinpichavant.beans.User;
 import dev.valentinpichavant.beans.UserService;
 import dev.valentinpichavant.exceptions.DuplicateEmailException;
 import dev.valentinpichavant.forms.RegistrationForm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.ConnectionKey;
-import org.springframework.social.connect.UserProfile;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInUtils;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 
 @Controller
@@ -33,14 +35,19 @@ public class RegistrationController {
 
     private UserService service;
 
-    @Autowired
-    public RegistrationController(UserService service) {
+    private final ProviderSignInUtils providerSignInUtils;
+
+    @Inject
+    public RegistrationController(UserService service, ConnectionFactoryLocator connectionFactoryLocator,
+                                  UsersConnectionRepository connectionRepository) {
         this.service = service;
+        this.providerSignInUtils = new ProviderSignInUtils(connectionFactoryLocator, connectionRepository);
+
     }
 
     @RequestMapping(value = "/user/register", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
-        Connection<?> connection = ProviderSignInUtils.getConnection(request);
+        Connection<?> connection = providerSignInUtils.getConnectionFromSession(request);
 
         RegistrationForm registration = createRegistrationDTO(connection);
         model.addAttribute("user", registration);
@@ -52,10 +59,13 @@ public class RegistrationController {
         RegistrationForm dto = new RegistrationForm();
 
         if (connection != null) {
-            UserProfile socialMediaProfile = connection.fetchUserProfile();
-            dto.setEmail(socialMediaProfile.getEmail());
-            dto.setFirstName(socialMediaProfile.getFirstName());
-            dto.setLastName(socialMediaProfile.getLastName());
+
+            Facebook facebook = ((Connection<Facebook>) connection).getApi();
+            String[] fields = {"id", "email", "first_name", "last_name"};
+            org.springframework.social.facebook.api.User userProfile = facebook.fetchObject("me", org.springframework.social.facebook.api.User.class, fields);
+            dto.setEmail(userProfile.getEmail());
+            dto.setFirstName(userProfile.getFirstName());
+            dto.setLastName(userProfile.getLastName());
 
             ConnectionKey providerKey = connection.getKey();
             dto.setSignInProvider(SocialMediaService.valueOf(providerKey.getProviderId().toUpperCase()));
@@ -71,14 +81,14 @@ public class RegistrationController {
         if (result.hasErrors()) {
             return "user/registrationForm";
         }
-
         User registered = createUserAccount(userAccountData, result);
 
         if (registered == null) {
             return "user/registrationForm";
         }
+
         SecurityUtil.logInUser(registered);
-        ProviderSignInUtils.handlePostSignUp(registered.getEmail(), request);
+        providerSignInUtils.doPostSignUp(registered.getEmail(), request);
 
         return "redirect:/";
     }

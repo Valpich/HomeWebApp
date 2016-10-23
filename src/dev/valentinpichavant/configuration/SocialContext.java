@@ -32,10 +32,12 @@ public class SocialContext implements SocialConfigurer {
 
     @Override
     public void addConnectionFactories(ConnectionFactoryConfigurer cfConfig, Environment env) {
-        cfConfig.addConnectionFactory(new FacebookConnectionFactory(
+        FacebookConnectionFactory facebookConnectionFactory = new FacebookConnectionFactory(
                 env.getProperty("facebook.appId"),
                 env.getProperty("facebook.appSecret")
-        ));
+        );
+        facebookConnectionFactory.setScope("public_profile,email");
+        cfConfig.addConnectionFactory(facebookConnectionFactory);
     }
 
     @Override
