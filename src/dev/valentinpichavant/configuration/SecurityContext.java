@@ -37,7 +37,7 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
         web
                 //Spring Security ignores request to static resources such as CSS or JS files.
                 .ignoring()
-                .antMatchers("/static/**", "/test", "/");
+                .antMatchers("/static/**", "/test");
     }
 
 
@@ -63,7 +63,8 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
                         "/auth/**",
                         "/login",
                         "/signup/**",
-                        "/user/register/**"
+                        "/user/register/**",
+                        "/"
                 ).permitAll()
                 //The rest of the our application is protected.
                 .antMatchers("/**").hasRole("USER")
