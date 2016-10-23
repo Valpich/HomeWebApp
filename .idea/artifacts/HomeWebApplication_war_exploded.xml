@@ -14,6 +14,12 @@
           <element id="library" level="project" name="Spring MVC-4.3.3.RELEASE" />
           <element id="library" level="project" name="mysql:mysql-connector-java:Latest" />
           <element id="library" level="project" name="Hibernate 5.2.3-5.2.3" />
+          <element id="library" level="project" name="org.springframework.social:spring-social-facebook:1.1.1.RELEASE" />
+          <element id="library" level="project" name="org.springframework.social:spring-social-security:1.1.4.RELEASE" />
+          <element id="library" level="project" name="jstl:jstl:1.2" />
+          <element id="library" level="project" name="javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="org.hibernate:hibernate-validator:Latest" />
+          <element id="library" level="project" name="joda-time:joda-time:Latest" />
         </element>
       </element>
     </root>

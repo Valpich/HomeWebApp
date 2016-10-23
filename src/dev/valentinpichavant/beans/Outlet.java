@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "outlet")
-public class Outlet {
+public class Outlet extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +19,13 @@ public class Outlet {
     @Column(name = "outlet_activated")
     private Boolean activated;
 
+    @Column(name = "outlet_number")
+    private int number;
+
+    @Column(name = "outlet_description")
+    private String description;
+
+    @Override
     public Long getId() {
         return id;
     }
@@ -43,4 +50,29 @@ public class Outlet {
         this.activated = activated;
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Outlet{" +
+                "id=" + id +
+                ", activated=" + activated +
+                ", number=" + number +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
