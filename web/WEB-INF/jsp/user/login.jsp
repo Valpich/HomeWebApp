@@ -12,83 +12,90 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/social-buttons-3.css"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/dist/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/static/plugins/iCheck/square/blue.css">
 </head>
-<body>
-<div class="page-header">
-    <h1><spring:message code="label.user.login.page.title"/></h1>
-</div>
+<body class="hold-transition login-page">
+
 <!--
     If the user is anonymous (not logged in), show the login form
     and social sign in buttons.
 -->
 <sec:authorize access="isAnonymous()">
-    <!-- Login form -->
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h2><spring:message code="label.login.form.title"/></h2>
-            <!--
-                Error message is shown if login fails.
-            -->
-            <c:if test="${param.error eq 'bad_credentials'}">
-                <div class="alert alert-danger alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <spring:message code="text.login.page.login.failed.error"/>
-                </div>
-            </c:if>
-            <!-- Specifies action and HTTP method -->
-            <form action="${pageContext.request.contextPath}/login/authenticate" method="POST" role="form">
-                <!-- Add CSRF token -->
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <div class="row">
-                    <div id="form-group-email" class="form-group col-lg-4">
-                        <label class="control-label" for="user-email"><spring:message code="label.user.email"/>:</label>
-                        <!-- Add username field to the login form -->
-                        <input id="user-email" name="username" type="text" class="form-control"/>
-                    </div>
-                </div>
+    <c:if test="${param.error eq 'bad_credentials'}">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <spring:message code="text.login.page.login.failed.error"/>
+        </div>
+    </c:if>
 
-                <div class="row">
-                    <div id="form-group-password" class="form-group col-lg-4">
-                        <label class="control-label" for="user-password"><spring:message
-                                code="label.user.password"/>:</label>
-                        <!-- Add password field to the login form -->
-                        <input id="user-password" name="password" type="password" class="form-control"/>
-                    </div>
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Home controller</b><br/>Web Application</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form action="${pageContext.request.contextPath}/login/authenticate" method="post">
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <!-- Add submit button -->
-                        <button type="submit" class="btn btn-default"><spring:message
-                                code="label.user.login.submit.button"/></button>
-                    </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Password">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
             </form>
-            <div class="row">
-                <div class="form-group col-lg-4">
-                    <!-- Add create user account link -->
-                    <a href="${pageContext.request.contextPath}/user/register"><spring:message
-                            code="label.navigation.registration.link"/></a>
-                </div>
-            </div>
+
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="${pageContext.request.contextPath}/auth/facebook"
+                   class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i><spring:message
+                        code="label.social.sign.in.title"/></a>
         </div>
+            <!-- /.social-auth-links -->
+
     </div>
-    <!-- Social Sign In Buttons -->
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h2><spring:message code="label.social.sign.in.title"/></h2>
-            <div class="row social-button-row">
-                <div class="col-lg-4">
-                    <!-- Add Facebook sign in button -->
-                    <a href="${pageContext.request.contextPath}/auth/facebook">
-                        <button class="btn btn-facebook"><i class="icon-facebook"></i> | <spring:message
-                                code="label.facebook.sign.in.button"/></button>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <!-- /.login-box-body -->
     </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery 2.2.3 -->
+    <script src="${pageContext.request.contextPath}/static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="${pageContext.request.contextPath}/static/static/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
 </sec:authorize>
 <!--
     If the user is already authenticated, show a help message instead
