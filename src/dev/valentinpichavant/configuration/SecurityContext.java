@@ -62,6 +62,7 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/auth/**",
                         "/login",
+                        "/logout",
                         "/signup/**",
                         "/user/register/**",
                         "/"

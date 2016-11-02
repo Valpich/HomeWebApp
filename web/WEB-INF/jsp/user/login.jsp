@@ -57,11 +57,9 @@
             <form action="${pageContext.request.contextPath}/login/authenticate" method="post">
                 <div class="form-group has-feedback">
                     <input type="email" class="form-control" placeholder="Email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
@@ -71,8 +69,9 @@
             <div class="social-auth-links text-center">
                 <p>- OR -</p>
                 <a href="${pageContext.request.contextPath}/auth/facebook"
-                   class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i><spring:message
-                        code="label.social.sign.in.title"/></a>
+                   class="btn btn-block btn-social btn-facebook btn-flat" style="text-align: center;"><i
+                        class="fa fa-facebook"></i><spring:message
+                        code="label.facebook.sign.in.button"/></a>
         </div>
             <!-- /.social-auth-links -->
 

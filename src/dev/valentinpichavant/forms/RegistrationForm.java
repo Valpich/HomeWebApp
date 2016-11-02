@@ -45,6 +45,16 @@ public class RegistrationForm implements Serializable {
 
     private SocialMediaService signInProvider;
 
+    private String profilePicture;
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public RegistrationForm() {
 
     }
@@ -114,6 +124,7 @@ public class RegistrationForm implements Serializable {
                 ", password='" + password + '\'' +
                 ", passwordVerification='" + passwordVerification + '\'' +
                 ", signInProvider=" + signInProvider +
+                ", profilePicture='" + profilePicture + '\'' +
                 '}';
     }
 }

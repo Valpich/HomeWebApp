@@ -34,10 +34,12 @@ public class RepositoryUserService implements UserService {
                 .email(userAccountData.getEmail())
                 .firstName(userAccountData.getFirstName())
                 .lastName(userAccountData.getLastName())
+                .profilePicture(userAccountData.getProfilePicture())
                 .password(encodedPassword);
 
         if (userAccountData.isSocialSignIn()) {
             user.signInProvider(userAccountData.getSignInProvider());
+            user.profilePicture(userAccountData.getProfilePicture());
         }
 
         User registered = user.build();

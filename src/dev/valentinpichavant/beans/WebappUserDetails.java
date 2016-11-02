@@ -22,6 +22,8 @@ public class WebappUserDetails extends SocialUser {
 
     private Role role;
 
+    private String profilePicture;
+
     private SocialMediaService socialSignInProvider;
 
     public WebappUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
@@ -68,6 +70,14 @@ public class WebappUserDetails extends SocialUser {
         this.socialSignInProvider = socialSignInProvider;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public static Builder getBuilder() {
         return new Builder();
     }
@@ -83,6 +93,8 @@ public class WebappUserDetails extends SocialUser {
         private String lastName;
 
         private String password;
+
+        private String profilePicture;
 
         private Role role;
 
@@ -103,6 +115,12 @@ public class WebappUserDetails extends SocialUser {
             this.id = id;
             return this;
         }
+
+        public Builder profilePicture(String profilePicture) {
+            this.profilePicture = profilePicture;
+            return this;
+        }
+
 
         public Builder lastName(String lastName) {
             this.lastName = lastName;
@@ -145,6 +163,7 @@ public class WebappUserDetails extends SocialUser {
             user.lastName = lastName;
             user.role = role;
             user.socialSignInProvider = socialSignInProvider;
+            user.profilePicture = profilePicture;
 
             return user;
         }

@@ -5,7 +5,7 @@
       <element id="artifact" artifact-name="HomeWebApplication:war exploded" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
-          <element id="library" level="project" name="org.springframework.social:spring-social-security:Latest" />
+          <element id="library" level="project" name="org.springframework.social:spring-social-security:1.1.4.RELEASE" />
           <element id="library" level="project" name="javax.validation:validation-api:1.1.0.Final" />
         </element>
       </element>

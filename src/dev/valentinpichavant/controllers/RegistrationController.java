@@ -29,6 +29,7 @@ import org.springframework.web.context.request.WebRequest;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+
 @Controller
 @SessionAttributes("user")
 public class RegistrationController {
@@ -66,7 +67,7 @@ public class RegistrationController {
             dto.setEmail(userProfile.getEmail());
             dto.setFirstName(userProfile.getFirstName());
             dto.setLastName(userProfile.getLastName());
-
+            dto.setProfilePicture(connection.createData().getImageUrl());
             ConnectionKey providerKey = connection.getKey();
             dto.setSignInProvider(SocialMediaService.valueOf(providerKey.getProviderId().toUpperCase()));
         }

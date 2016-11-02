@@ -49,6 +49,8 @@
                             Add the firstName field to the form and ensure
                             that validation errors are shown.
                         -->
+                        <form:hidden id="user-profilePicture" path="profilePicture" cssClass="form-control"/>
+
                         <form:input id="user-firstName" path="firstName" cssClass="form-control"/>
                         <form:errors id="error-firstName" path="firstName" cssClass="help-block"/>
                     </div>

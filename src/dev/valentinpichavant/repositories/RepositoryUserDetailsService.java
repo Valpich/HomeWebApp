@@ -36,6 +36,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
                 .role(user.getRole())
                 .socialSignInProvider(user.getSignInProvider())
                 .username(user.getEmail())
+                .profilePicture(user.getProfilePicture())
                 .build();
 
         return principal;

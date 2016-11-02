@@ -36,6 +36,9 @@ public class User extends BaseEntity<Long> {
     @Column(name = "sign_in_provider", length = 20)
     private SocialMediaService signInProvider;
 
+    @Column(name = "profil_picture")
+    private String profilePicture;
+
     @Override
     public Long getId() {
         return id;
@@ -93,6 +96,14 @@ public class User extends BaseEntity<Long> {
         this.signInProvider = signInProvider;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public static Builder getBuilder() {
         return new Builder();
     }
@@ -125,6 +136,11 @@ public class User extends BaseEntity<Long> {
 
         public Builder password(String password) {
             user.password = password;
+            return this;
+        }
+
+        public Builder profilePicture(String profilePicture) {
+            user.profilePicture = profilePicture;
             return this;
         }
 
