@@ -63,9 +63,13 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-            </div>
+                </div>
             </form>
-
+            <div class="form-group">
+                <button onclick="window.location.href='${pageContext.request.contextPath}/user/register'"
+                        class="btn btn-warning btn-block btn-flat">Sign Up
+                </button>
+            </div>
             <div class="social-auth-links text-center">
                 <p>- OR -</p>
                 <a href="${pageContext.request.contextPath}/auth/facebook"

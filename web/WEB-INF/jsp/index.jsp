@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <sec:authorize access="isAuthenticated()">
 
 <html>
@@ -65,52 +66,21 @@
                 <ul class="nav navbar-nav">
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<sec:authentication
+                        <a href="https://www.facebook.com">
+                            <sec:authentication property="principal.socialSignInProvider" var="signInProvider"/>
+                            <c:if test="${signInProvider != null}">
+                                <img src="<sec:authentication
             property="principal.profilePicture"/>" class="user-image" alt="User Image">
+                            </c:if>
+                            <c:if test="${signInProvider == null}">
+                                <img src="${pageContext.request.contextPath}/static/dist/img/empty_picture.png"
+                                     class="user-image" alt="User Image">
+                            </c:if>
                             <span class="hidden-xs"><sec:authentication
                                     property="principal.firstName"/> <sec:authentication
                                     property="principal.lastName"/></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                <img src="<sec:authentication
-            property="principal.profilePicture"/>" class="img-circle" alt="User Image">
 
-                                <p>
-                                    <sec:authentication
-                                            property="principal.firstName"/> <sec:authentication
-                                        property="principal.lastName"/> - Web Developer
-                                    <small>Member since Nov. 2012</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
                         <a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i></a>
@@ -127,14 +97,21 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
+                    <sec:authentication property="principal.socialSignInProvider" var="signInProvider"/>
+                    <c:if test="${signInProvider != null}">
                     <img src="<sec:authentication
             property="principal.profilePicture"/>" class="img-circle" alt="User Image">
+                    </c:if>
+                    <c:if test="${signInProvider == null}">
+                        <img src="${pageContext.request.contextPath}/static/dist/img/empty_picture.png"
+                             class="img-circle" alt="User Image">
+                    </c:if>
                 </div>
                 <div class="pull-left info">
                     <p><sec:authentication
                             property="principal.firstName"/> <sec:authentication
                             property="principal.lastName"/></p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    <i class="fa fa-circle text-success"></i> Online
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
