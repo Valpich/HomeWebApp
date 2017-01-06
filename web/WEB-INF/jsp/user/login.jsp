@@ -89,7 +89,7 @@
     <!-- Bootstrap 3.3.6 -->
     <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
-    <script src="${pageContext.request.contextPath}/static/static/plugins/iCheck/icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/plugins/iCheck/icheck.min.js"></script>
     <script>
         $(function () {
             $('input').iCheck({

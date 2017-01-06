@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 /**
- * Created by valentinpichavant on 11/1/16.
+ * Created by valentinpichavant on 06/01/17.
  */
 @Controller
-public class IndexController {
+public class OutletController {
 
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView showIndexPage(Principal principal) {
+    @RequestMapping(value = "/outlet", method = RequestMethod.GET)
+    public ModelAndView showOutletPage(Principal principal) {
 
         if (principal == null) return new ModelAndView("user/login");
-        return new ModelAndView("index");
+        return new ModelAndView("outlet");
     }
 }

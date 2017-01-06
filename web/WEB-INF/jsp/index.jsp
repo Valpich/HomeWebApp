@@ -117,7 +117,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Home</span>
                         <span class="pull-right-container">
@@ -125,7 +125,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Outlets </a></li>
+                        <li><a href="${pageContext.request.contextPath}/outlet"><i class="fa fa-circle-o"></i> Outlets
+                        </a></li>
                     </ul>
                 </li>
             </ul>
@@ -143,7 +144,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Outlets</li>
+                <li>Outlets</li>
             </ol>
         </section>
 
