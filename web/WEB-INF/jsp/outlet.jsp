@@ -46,7 +46,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="${pageContext.request.contextPath}/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>HC</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -116,14 +116,15 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active treeview">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Home</span>
+                        <a href="${pageContext.request.contextPath}/">
+                            <i class="fa fa-home"></i> <span>Home</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Outlets </a></li>
+                            <li class="active"><a href="${pageContext.request.contextPath}/outlet"><i
+                                    class="fa fa-circle-o"></i> Outlets </a></li>
                         </ul>
                     </li>
                 </ul>
@@ -140,7 +141,7 @@
                     <small>Version 1.0</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="active">Outlets</li>
                 </ol>
             </section>
@@ -149,34 +150,37 @@
             <section class="content">
                 <!-- Info boxes -->
 
-                <!-- Main row -->
-                <div class="row">
                     <!-- split buttons box -->
-                    <div class="box">
+                <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title">Outlets</h3>
                         </div>
                         <div class="box-body">
-                            <div class="margin">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-info btn-flat dropdown-toggle"
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-warning btn-flat dropdown-toggle"
                                             data-toggle="dropdown">
                                         <span class="caret"></span>
                                         <span>Manage outlets</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Add</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/outlet/add">Add</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Remove</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/outlet/remove">Remove</a></li>
                                     </ul>
-                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
+                    <div class="box-header">
+                        <h3 class="box-title">Activate/Deactivate an outlet</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-block btn-success btn-flat">Outlet #1</button>
+                            <button type="button" class="btn btn-block btn-danger btn-flat">Outlet #2</button>
+                        </div>
+                    </div>
                     </div>
                     <!-- end split buttons box -->
-                </div>
-                <!-- /.row -->
             </section>
             <!-- /.content -->
         </div>

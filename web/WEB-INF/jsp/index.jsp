@@ -48,7 +48,7 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="${pageContext.request.contextPath}/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>HC</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -118,8 +118,8 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Home</span>
+                    <a href="${pageContext.request.contextPath}/">
+                        <i class="fa fa-outlet"></i> <span>Home</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -143,7 +143,7 @@
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li>Outlets</li>
             </ol>
         </section>
