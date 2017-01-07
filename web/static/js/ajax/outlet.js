@@ -1,8 +1,17 @@
-$(document).ready(function () {
+function outletAjax(id) {
     $.ajax({
-        url: "http://rest-service.guides.spring.io/greeting"
-    }).then(function (data) {
-        $('.greeting-id').append(data.id);
-        $('.greeting-content').append(data.content);
+        url: getUrl(id)
     });
-});
+}
+function getUrl(id) {
+    var ctx = window.location.pathname,
+        path = '/' !== ctx ? ctx.substring(0, ctx.indexOf('/', 1) + 1) : ctx;
+    var toReturn = path + (/\/$/.test(path) ? '' : '/') + "outlet/" + id;
+    var button = document.getElementById("button_" + id);
+    if (button.className == "btn btn-block btn-danger btn-flat") {
+        button.className = "btn btn-block btn-success btn-flat";
+    } else {
+        button.className = "btn btn-block btn-danger btn-flat";
+    }
+    return toReturn;
+}

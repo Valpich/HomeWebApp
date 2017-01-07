@@ -1,14 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: dev.valentinpichavant
-  Date: 01/07/17
-  Time: 10:29 AM
+  Date: 01/08/17
+  Time: 03:29 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <sec:authorize access="isAuthenticated()">
 
     <html>
@@ -150,42 +151,43 @@
             <section class="content">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Outlets</h3>
+                        <h3 class="box-title">Add an outlet</h3>
                     </div>
                     <div class="box-body">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-warning btn-flat dropdown-toggle"
-                                    data-toggle="dropdown">
-                                <span class="caret"></span>
-                                <span>Manage outlets</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="${pageContext.request.contextPath}/outlet/add">Add</a></li>
-                                <li class="divider"></li>
-                                <li><a href="${pageContext.request.contextPath}/outlet/remove">Remove</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="box-header">
-                        <h3 class="box-title">Activate/Deactivate an outlet</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="btn-group">
-                            <c:forEach items="${outlets}" var="outlet">
-                                <c:if test="${outlet.activated}">
-                                    <button id="button_<c:out value="${outlet.id}"/>"
-                                            onclick="outletAjax(<c:out value="${outlet.id}"/>)" type="button"
-                                            class="btn btn-block btn-success btn-flat"><c:out
-                                            value="${outlet.description}"/></button>
-                                </c:if>
-                                <c:if test="${!outlet.activated}">
-                                    <button id="button_<c:out value="${outlet.id}"/>"
-                                            onclick="outletAjax(<c:out value="${outlet.id}"/>)" type="button"
-                                            class="btn btn-block btn-danger btn-flat"><c:out
-                                            value="${outlet.description}"/></button>
-                                </c:if>
-                            </c:forEach>
-                        </div>
+                        <form:form method="POST" action="${pageContext.request.contextPath}/outlet/add">
+                            <table>
+                                <tr>
+                                    <td><form:label path="description">Description</form:label></td>
+                                </tr>
+                                <tr>
+                                    <td><form:input path="description"/></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="number">Number</form:label></td>
+                                </tr>
+                                <tr>
+                                    <td><form:input path="number"
+                                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="activated">Is activated ?</form:label></td>
+                                </tr>
+                                <tr>
+                                    <td><form:checkbox path="activated"/></td>
+                                </tr>
+                                <tr>
+                                    <td><br/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="btn btn-block btn-success btn-flat" value="Submit">
+                                            Submit
+                                        </button>
+                                    </td>
+                                </tr>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            </table>
+                        </form:form>
                     </div>
                 </div>
             </section>

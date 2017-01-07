@@ -15,6 +15,7 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private LocalSessionFactoryBean localSessionFactoryBean;
 

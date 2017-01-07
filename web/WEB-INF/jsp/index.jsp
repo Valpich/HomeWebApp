@@ -143,7 +143,7 @@
                 <small>Version 1.0</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-home"></i> Home</a></li>
                 <li>Outlets</li>
             </ol>
         </section>
@@ -197,8 +197,6 @@
 <script src="${pageContext.request.contextPath}/static/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="${pageContext.request.contextPath}/static/dist/js/demo.js"></script>
-</body>
-
 </body>
 </html>
 </sec:authorize>

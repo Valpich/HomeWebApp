@@ -42,14 +42,6 @@ public class Outlet extends BaseEntity<Long> {
         this.activated = activated;
     }
 
-    public Outlet() {
-        this.activated = null;
-    }
-
-    public Outlet(Boolean activated) {
-        this.activated = activated;
-    }
-
     public int getNumber() {
         return number;
     }

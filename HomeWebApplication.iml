@@ -12,7 +12,23 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/dev/valentinpichavant/configuration/ApplicationConfiguration.java</file>
+          <file>file://$MODULE_DIR$/src/dev/valentinpichavant/configuration/PersistenceConfig.java</file>
+          <file>file://$MODULE_DIR$/src/dev/valentinpichavant/configuration/SecurityContext.java</file>
+          <file>file://$MODULE_DIR$/src/dev/valentinpichavant/configuration/SocialContext.java</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/messages.xml</file>
+        </fileset>
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+        </fileset>
+        <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
