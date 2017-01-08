@@ -45,4 +45,6 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 }

@@ -24,7 +24,7 @@ public class OutletAjaxController {
     LocalSessionFactoryBean localSessionFactoryBean;
 
 
-    @RequestMapping(value = "/outlet/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/outlet/activate/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     public boolean getCountryById(@PathVariable Long id) throws Exception {
         Session session = localSessionFactoryBean.getObject().openSession();
         String query = "select outlet from Outlet outlet where outlet.id = :id";
