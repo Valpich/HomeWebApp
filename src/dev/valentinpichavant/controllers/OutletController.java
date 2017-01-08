@@ -37,7 +37,7 @@ public class OutletController {
     }
 
     @RequestMapping(value = "/outlet/add", method = RequestMethod.GET)
-    public ModelAndView addStudent(Principal principal) {
+    public ModelAndView addOutlet(Principal principal) {
         if (principal == null) return new ModelAndView("user/login");
         Outlet outlet = new Outlet();
         outlet.setActivated(true);
@@ -45,7 +45,7 @@ public class OutletController {
     }
 
     @RequestMapping(value = "/outlet/add", method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute Outlet outlet, Principal principal) {
+    public String addOutlet(@ModelAttribute Outlet outlet, Principal principal) {
         if (principal == null) return "redirect:/user/login";
         outlet.setCreationTime(new Date());
         outlet.setModificationTime(outlet.getCreationTime());
@@ -53,6 +53,30 @@ public class OutletController {
         if (outlet.getActivated() == null) outlet.setActivated(new Boolean("false"));
         Transaction tx = session.beginTransaction();
         session.save(outlet);
+        tx.commit();
+        return "redirect:/outlet";
+    }
+
+    @RequestMapping(value = "/outlet/remove", method = RequestMethod.GET)
+    public ModelAndView removeOutlet(Principal principal) {
+        if (principal == null) return new ModelAndView("user/login");
+        Session session = localSessionFactoryBean.getObject().openSession();
+        String query = "select outlet from Outlet outlet";
+        List results = session.createQuery(query).list();
+        ModelAndView modelAndView = new ModelAndView("outletRemove");
+        modelAndView.addObject("outlets", results);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/outlet/remove", method = RequestMethod.POST)
+    public String removeOutlet(Long id, Principal principal) {
+        if (principal == null) return "redirect:/user/login";
+        Session session = localSessionFactoryBean.getObject().openSession();
+        String query = "select outlet from Outlet outlet where outlet.id = :id";
+        List results = session.createQuery(query).setParameter("id", id).list();
+        Outlet outlet = (Outlet) results.get(0);
+        Transaction tx = session.beginTransaction();
+        session.delete(outlet);
         tx.commit();
         return "redirect:/outlet";
     }
