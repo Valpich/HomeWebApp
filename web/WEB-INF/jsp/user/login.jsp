@@ -56,14 +56,16 @@
 
             <form action="${pageContext.request.contextPath}/login/authenticate" method="post">
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" id="user-email" name="username" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" id="user-password" name="password" class="form-control"
+                           placeholder="Password">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <div class="form-group">
                 <button onclick="window.location.href='${pageContext.request.contextPath}/user/register'"
