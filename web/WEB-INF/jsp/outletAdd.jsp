@@ -163,10 +163,17 @@
                                     <td><form:input path="description"/></td>
                                 </tr>
                                 <tr>
-                                    <td><form:label path="number">Number</form:label></td>
+                                    <td><form:label path="numberOn">Number on</form:label></td>
                                 </tr>
                                 <tr>
-                                    <td><form:input path="number"
+                                    <td><form:input path="numberOn"
+                                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="numberOff">Number off</form:label></td>
+                                </tr>
+                                <tr>
+                                    <td><form:input path="numberOff"
                                                     onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></td>
                                 </tr>
                                 <tr>

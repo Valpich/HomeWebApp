@@ -142,10 +142,6 @@
                 Home Controller
                 <small>Version 1.0</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-home"></i> Home</a></li>
-                <li>Outlets</li>
-            </ol>
         </section>
 
         <!-- Main content -->

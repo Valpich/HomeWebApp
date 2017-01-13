@@ -19,8 +19,11 @@ public class Outlet extends BaseEntity<Long> {
     @Column(name = "outlet_activated")
     private Boolean activated;
 
-    @Column(name = "outlet_number")
-    private int number;
+    @Column(name = "outlet_number_on")
+    private int numberOn;
+
+    @Column(name = "outlet_number_off")
+    private int numberOff;
 
     @Column(name = "outlet_description")
     private String description;
@@ -42,12 +45,20 @@ public class Outlet extends BaseEntity<Long> {
         this.activated = activated;
     }
 
-    public int getNumber() {
-        return number;
+    public int getNumberOn() {
+        return numberOn;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNumberOn(int number) {
+        this.numberOn = number;
+    }
+
+    public int getNumberOff() {
+        return numberOff;
+    }
+
+    public void setNumberOff(int number) {
+        this.numberOff = number;
     }
 
     public String getDescription() {
@@ -63,7 +74,8 @@ public class Outlet extends BaseEntity<Long> {
         return "Outlet{" +
                 "id=" + id +
                 ", activated=" + activated +
-                ", number=" + number +
+                ", numberOn=" + numberOn +
+                ", numberOff=" + numberOff +
                 ", description='" + description + '\'' +
                 '}';
     }
