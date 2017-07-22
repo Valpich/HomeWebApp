@@ -8,5 +8,7 @@ import dev.valentinpichavant.forms.RegistrationForm;
  */
 public interface UserService {
 
-    User registerNewUserAccount(RegistrationForm userAccountData) throws DuplicateEmailException;
+    default User registerNewUserAccount(RegistrationForm userAccountData) throws DuplicateEmailException {
+        return null;
+    }
 }
