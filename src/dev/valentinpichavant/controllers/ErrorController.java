@@ -16,4 +16,6 @@ public class ErrorController {
     public ModelAndView renderErrorPage() {
         return new ModelAndView("error404");
     }
+
+
 }

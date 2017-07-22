@@ -18,8 +18,8 @@
           <element id="library" level="project" name="org.springframework.social:spring-social-security:1.1.4.RELEASE" />
           <element id="library" level="project" name="jstl:jstl:1.2" />
           <element id="library" level="project" name="javax.validation:validation-api:1.1.0.Final" />
-          <element id="library" level="project" name="org.hibernate:hibernate-validator:Latest" />
-          <element id="library" level="project" name="joda-time:joda-time:Latest" />
+          <element id="library" level="project" name="org.hibernate:hibernate-validator:Release" />
+          <element id="library" level="project" name="joda-time:joda-time:Release" />
         </element>
       </element>
     </root>
