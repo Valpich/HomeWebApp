@@ -211,6 +211,5 @@
     <script src="${pageContext.request.contextPath}/static/dist/js/demo.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/ajax/outlet.js"></script>
     </body>
-    formaction=
     </html>
 </sec:authorize>
